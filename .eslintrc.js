@@ -13,6 +13,8 @@ module.exports = {
     quotes: 'off',
     'space-before-function-paren': 'off', // 修改不校验
     'vue/multi-word-component-names': 'off',
-    'no-unused-vars': 'warn'
+    'no-unused-vars': 'warn',
+    'eslint-disable-next-line': 'off',
+    'no-undef': 'off'
   }
 }
