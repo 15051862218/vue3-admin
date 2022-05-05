@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFormRef">
+    <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -23,8 +23,8 @@
       </el-form-item>
 
       <el-button type="primary" style="width: 100%; margin-bottom: 30px" :loading="loading" @click="handleLogin"
-        >登录</el-button
-      >
+        >登录
+      </el-button>
     </el-form>
   </div>
 </template>
@@ -34,6 +34,8 @@ import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+// import SvgIcon from '@/components/SvgIcon'
+
 // 数据源
 const loginForm = ref({
   username: 'super-admin',
@@ -80,7 +82,6 @@ const handleLogin = () => {
       .dispatch('user/login', loginForm.value)
       .then((data) => {
         loading.value = false
-        console.log(data)
         router.push('/')
       })
       .catch((err) => {
@@ -90,6 +91,7 @@ const handleLogin = () => {
   })
 }
 </script>
+
 <style lang="scss" scoped>
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
