@@ -1,6 +1,7 @@
 @import './variables.module.scss';
 @import './mixins.scss';
 @import './sidebar.scss';
+@import './element.scss';
 html,
 body {
   height: 100%;
@@ -51,4 +52,3 @@ div:focus {
     height: 0;
   }
 }
-
