@@ -5,6 +5,7 @@
     <div class="right-menu">
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect"></lang-select>
+      <screen-full class="right-menu-item hover-effect"></screen-full>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -37,6 +38,7 @@ import hamburger from '@/components/Hamburger.vue'
 import breadcrumb from '@/components/Breadcrumb/index.vue'
 import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect/index.vue'
+import ScreenFull from '@/components/Screenfull'
 import { useStore } from 'vuex'
 
 const store = useStore()
