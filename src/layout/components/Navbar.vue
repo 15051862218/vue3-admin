@@ -3,6 +3,7 @@
     <hamburger class="hanburger-container"></hamburger>
     <breadcrumb></breadcrumb>
     <div class="right-menu">
+      <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect"></lang-select>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -35,7 +36,9 @@ import { useRoute } from 'vue-router'
 import hamburger from '@/components/Hamburger.vue'
 import breadcrumb from '@/components/Breadcrumb/index.vue'
 import LangSelect from '@/components/LangSelect'
+import ThemePicker from '@/components/ThemeSelect/index.vue'
 import { useStore } from 'vuex'
+
 const store = useStore()
 const route = useRoute()
 // 生成数组数据
