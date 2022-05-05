@@ -1,12 +1,12 @@
 <template>
   <div class="navbar">
-     <hamburger class="hanburger-container"></hamburger>
-     <breadcrumb></breadcrumb>
+    <hamburger class="hanburger-container"></hamburger>
+    <breadcrumb></breadcrumb>
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar shape="square" :size="40" :src="$store.getters.userInfo.avatar"> </el-avatar>
+          <el-avatar shape="square" :size="40" :src="$store.getters.userInfo.avatar"></el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>
@@ -17,7 +17,7 @@
             <a target="_blank" href="">
               <el-dropdown-item>课程主页</el-dropdown-item>
             </a>
-            <el-dropdown-item divided @click="logout"> 退出登录 </el-dropdown-item>
+            <el-dropdown-item divided @click="handleLoginout"> 退出登录 </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -26,11 +26,30 @@
 </template>
 
 <script setup>
-import { useStore } from 'vuex'
-import Hamburger from '@/components/Hamburger.vue'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import hamburger from '@/components/Hamburger.vue'
 import breadcrumb from '@/components/Breadcrumb/index.vue'
+import { useStore } from 'vuex'
 const store = useStore()
-const logout = () => {
+const route = useRoute()
+// 生成数组数据
+const breadcrumbData = ref([])
+const getBreadcrumbData = () => {
+  breadcrumbData.value = route.matched.filter((item) => item.meta && item.meta.title)
+  console.log(breadcrumbData.value)
+}
+// 监听路由变化时触发
+watch(
+  route,
+  () => {
+    getBreadcrumbData()
+  },
+  {
+    immediate: true
+  }
+)
+const handleLoginout = () => {
   store.dispatch('user/logout')
 }
 </script>
@@ -49,7 +68,7 @@ const logout = () => {
     float: right;
     padding-right: 16px;
 
-    ::v-deep(avatar-container) {
+    ::v-deep(.avatar-container) {
       cursor: pointer;
       .avatar-wrapper {
         margin-top: 5px;
