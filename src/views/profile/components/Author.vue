@@ -1,7 +1,7 @@
 <template>
   <div class="author-container">
     <div class="header">
-      <my-avatar image="http://47.96.31.161:9000/vue3/me.jpg" height="60px" width="60px" :hoverable="false">
+      <my-avatar image="https://uplaod-189989.oss-cn-hangzhou.aliyuncs.com/avatar.jpg" height="60px" width="60px" :hoverable="false">
         {{ $t('msg.profile.name') }}
       </my-avatar>
       <div class="header-desc">
