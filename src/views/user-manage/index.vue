@@ -2,7 +2,7 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary"> {{ $t('msg.excel.importExcel') }}</el-button>
+        <el-button type="primary" @click="onImportExcelClick"> {{ $t('msg.excel.importExcel') }}</el-button>
         <el-button type="success">
           {{ $t('msg.excel.exportExcel') }}
         </el-button>
@@ -28,11 +28,11 @@
             </div>
           </template>
         </el-table-column>
-       <el-table-column :label="$t('msg.excel.openTime')">
-  <template #default="{ row }">
-      {{ $filters.dateFilter(row.openTime) }}
-  </template>
-</el-table-column>
+        <el-table-column :label="$t('msg.excel.openTime')">
+          <template #default="{ row }">
+            {{ $filters.dateFilter(row.openTime) }}
+          </template>
+        </el-table-column>
         <el-table-column :label="$t('msg.excel.action')" fixed="right" width="260">
           <template #default>
             <el-button type="primary" size="mini">{{ $t('msg.excel.show') }}</el-button>
@@ -61,12 +61,14 @@
 import { ref } from 'vue'
 import { getUserManageList } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
+import { useRouter } from 'vue-router'
 
 // 数据相关
 const tableData = ref([])
 const total = ref(0)
 const page = ref(1)
 const size = ref(5)
+const router = useRouter()
 // 获取数据的方法
 const getListData = async () => {
   const result = await getUserManageList({
@@ -95,6 +97,13 @@ const handleSizeChange = (currentSize) => {
 const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
+}
+
+/**
+ * excel 导入点击事件
+ */
+const onImportExcelClick = () => {
+  router.push('/user/import')
 }
 </script>
 
