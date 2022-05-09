@@ -20,7 +20,7 @@ import { useStore } from 'vuex'
 const route = useRoute()
 
 /**
- * 国际化 tags
+ * 国际化 tags监听变化
  */
 watchSwitchLang(() => {
   store.getters.tagsViewList.forEach((route, index) => {

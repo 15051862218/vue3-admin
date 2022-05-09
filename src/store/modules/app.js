@@ -26,7 +26,7 @@ export default {
       }
     },
     /**
-* 为指定的 tag 修改 title
+* 为指定的 tag 修改 title国际化
 */
     changeTagsView (state, { index, tag }) {
       state.tagsViewList[index] = tag
