@@ -18,7 +18,9 @@
           </template>
           <template #default="{ row }" v-else-if="item.prop === 'action'">
             <el-button type="primary" size="mini" @click="onShowClick(row)">{{ $t('msg.article.show') }}</el-button>
-            <el-button type="danger" size="mini" @click="onRemoveClick(row)">{{ $t('msg.article.remove') }}</el-button>
+            <el-button type="danger" size="mini" @click="onRemoveClick(row)">
+              {{ $t('msg.article.remove') }}
+ </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -44,6 +46,8 @@ import { watchSwitchLang } from '@/utils/i18n'
 import { dynamicData, selectDynamicLabel, tableColumns } from './dynamic'
 import { ref, onActivated, onMounted } from 'vue'
 import { tableRef, initSortable } from './sortable'
+import { useI18n } from 'vue-i18n'
+const i18n = useI18n()
 
 // 表格拖拽相关
 onMounted(() => {
@@ -80,7 +84,20 @@ const getListData = async () => {
   tableData.value = result.list
   total.value = result.total
 }
+
+const onRemoveClick = (row) => {
+  ElMessageBox.confirm(i18n.t('msg.article.dialogTitle1') + row.title + i18n.t('msg.article.dialogTitle2'), {
+    type: 'warning'
+  }).then(async () => {
+    await deleteArticle(row._id)
+    ElMessage.success(i18n.t('msg.article.removeSuccess'))
+    // 重新渲染数据
+    getListData()
+  })
+}
 getListData()
+// 删除用户
+
 // 监听语言切换
 watchSwitchLang(getListData)
 // 处理数据不重新加载的问题
