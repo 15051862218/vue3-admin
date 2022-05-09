@@ -11,28 +11,16 @@ export default {
     userInfo: {}
   }),
   mutations: {
-    setToken(state, token) {
+    setToken (state, token) {
       state.token = token
       setItem(TOKEN, token)
     },
-    setUserInfo(state, userInfo) {
+    setUserInfo (state, userInfo) {
       state.userInfo = userInfo
     }
   },
   actions: {
-    async getUserInfo(context) {
-      const res = await getUserInfo()
-      console.log(res)
-      this.commit('user/setUserInfo', res)
-      return res
-    },
-    logout() {
-      this.commit('user/setToken', '')
-      this.commit('user/setUserInfo', {})
-      removeAllItem()
-      router.push('/login')
-    },
-    login(context, userInfo) {
+    login (context, userInfo) {
       const { username, password } = userInfo
       console.log(md5(password))
       return new Promise((resolve, reject) => {
@@ -42,9 +30,6 @@ export default {
         })
           .then((data) => {
             setTimeStamp()
-            // resolve(data.data)
-            // console.log(data.data)
-            // this.commit('user/setToken', data.token)
             resolve(data)
             console.log(data)
             this.commit('user/setToken', data.token)
@@ -53,6 +38,19 @@ export default {
             reject(err)
           })
       })
+    },
+    // 增加
+    async getUserInfo (context) {
+      const res = await getUserInfo()
+      console.log(res)
+      this.commit('user/setUserInfo', res)
+      return res
+    },
+    logout () {
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      removeAllItem()
+      router.push('/login')
     }
   }
 }

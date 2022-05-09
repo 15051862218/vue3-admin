@@ -3,7 +3,7 @@
     <hamburger class="hanburger-container"></hamburger>
     <breadcrumb></breadcrumb>
     <div class="right-menu">
-      <header-search  class="right-menu-item hover-effect"></header-search>
+      <header-search class="right-menu-item hover-effect"></header-search>
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect"></lang-select>
       <screen-full class="right-menu-item hover-effect"></screen-full>

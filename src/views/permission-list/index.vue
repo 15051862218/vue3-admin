@@ -16,7 +16,6 @@
     </el-card>
   </div>
 </template>
-
 <script setup>
 import { permissionList } from '@/api/permission'
 import { watchSwitchLang } from '@/utils/i18n'
@@ -36,5 +35,3 @@ const getPermissionList = async () => {
 getPermissionList()
 watchSwitchLang(getPermissionList)
 </script>
-
-<style lang="scss" scoped></style>
