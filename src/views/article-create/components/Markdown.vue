@@ -9,7 +9,31 @@
 </template>
 
 <script setup>
-import {} from 'vue'
+import { commitArticle } from './commit'
+const props = defineProps({
+  title: {
+    required: true,
+    type: String
+  }
+})
+
+const emits = defineEmits(['onSuccess'])
+// 处理提交
+const onSubmitClick = async () => {
+  // 创建文章
+  const res = await commitArticle({
+    title: props.title,
+    content: mkEditor.getHTML()
+  })
+  alert(JSON.stringify(res))
+  await commitArticle({
+    title: props.title,
+    content: mkEditor.getHTML()
+  })
+
+  mkEditor.reset()
+  emits('onSuccess')
+}
 </script>
 
 <style lang="scss" scoped>
