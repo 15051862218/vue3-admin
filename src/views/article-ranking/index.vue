@@ -20,7 +20,7 @@
             <el-button type="primary" size="mini" @click="onShowClick(row)">{{ $t('msg.article.show') }}</el-button>
             <el-button type="danger" size="mini" @click="onRemoveClick(row)">
               {{ $t('msg.article.remove') }}
- </el-button>
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -47,8 +47,15 @@ import { dynamicData, selectDynamicLabel, tableColumns } from './dynamic'
 import { ref, onActivated, onMounted } from 'vue'
 import { tableRef, initSortable } from './sortable'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 const i18n = useI18n()
-
+/**
+ * 查看按钮点击事件
+ */
+const router = useRouter()
+const onShowClick = (row) => {
+  router.push(`/article/${row._id}`)
+}
 // 表格拖拽相关
 onMounted(() => {
   initSortable(tableData, getListData)
