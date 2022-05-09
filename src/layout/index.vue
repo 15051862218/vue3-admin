@@ -15,16 +15,19 @@
     </div>
   </div>
 </template>
+
 <script setup>
+import TagsView from '@/components/TagsView/index'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import AppMain from './components/AppMain'
-import TagsView from '@/components/TagsView'
-import { } from 'vue'
+import {} from 'vue'
+import variables from '@/styles/variables.module.scss'
 </script>
+
 <style lang="scss" scoped>
-@import '../style/mixins.scss';
-@import '../style/variables.module.scss';
+@import '@/styles/index.scss';
+
 .app-wrapper {
   @include clearfix;
   position: relative;
@@ -33,13 +36,14 @@ import { } from 'vue'
 }
 
 .fixed-header {
+  transition: width #{$sideBarDuration};
   position: fixed;
   top: 0;
   right: 0;
   z-index: 9;
   width: calc(100% - #{$sideBarWidth});
-  transition: width #{$sideBarDuration};
 }
+
 .hideSidebar .fixed-header {
   width: calc(100% - #{$hideSideBarWidth});
 }

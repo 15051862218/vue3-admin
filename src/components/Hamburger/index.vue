@@ -1,6 +1,6 @@
 <template>
   <div class="hamburger-container" @click="toggleClick">
-    <svg-icon class="hamburger" :icon="icon"></svg-icon>
+   <svg-icon id="guide-hamburger" class="hamburger" :icon="icon"></svg-icon>
   </div>
 </template>
 
@@ -13,7 +13,9 @@ const toggleClick = () => {
   store.commit('app/triggerSidebarOpened')
 }
 
-const icon = computed(() => (store.getters.sidebarOpened ? 'hamburger-opened' : 'hamburger-closed'))
+const icon = computed(() =>
+  store.getters.sidebarOpened ? 'hamburger-opened' : 'hamburger-closed'
+)
 </script>
 
 <style lang="scss" scoped>

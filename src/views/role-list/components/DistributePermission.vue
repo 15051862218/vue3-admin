@@ -27,7 +27,6 @@ import { rolePermission, distributePermission } from '@/api/role'
 import { useI18n } from 'vue-i18n'
 import { ElMessage } from 'element-plus'
 import { watchSwitchLang } from '@/utils/i18n'
-
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -55,8 +54,8 @@ const onConfirm = async () => {
 }
 
 /**
-  * 关闭
-  */
+ * 关闭
+ */
 const closed = () => {
   emits('update:modelValue', false)
 }
@@ -90,5 +89,4 @@ watch(
     if (val) getRolePermission()
   }
 )
-
 </script>

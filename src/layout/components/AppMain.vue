@@ -13,31 +13,17 @@
 <script setup>
 import { watch } from 'vue'
 import { isTags } from '@/utils/tags'
-import { generateTitle, watchSwitchLang } from '@/utils/i18n'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
+import { generateTitle, watchSwitchLang } from '@/utils/i18n'
 
 const route = useRoute()
+const store = useStore()
 
 /**
- * 国际化 tags监听变化
+ * 生成 title
  */
-watchSwitchLang(() => {
-  store.getters.tagsViewList.forEach((route, index) => {
-    store.commit('app/changeTagsView', {
-      index,
-      tag: {
-        ...route,
-        title: getTitle(route)
-      }
-    })
-  })
-})
-
-/**
-* 生成 title
-*/
-const getTitle = route => {
+const getTitle = (route) => {
   let title = ''
   if (!route.meta) {
     // 处理无 meta 的路由
@@ -50,9 +36,9 @@ const getTitle = route => {
 }
 
 /**
-* 监听路由变化
-*/
-const store = useStore()
+ * 监听路由变化
+ */
+
 watch(
   route,
   (to, from) => {
@@ -72,7 +58,20 @@ watch(
     immediate: true
   }
 )
-
+/**
+ * 国际化 tags
+ */
+watchSwitchLang(() => {
+  store.getters.tagsViewList.forEach((route, index) => {
+    store.commit('app/changeTagsView', {
+      index,
+      tag: {
+        ...route,
+        title: getTitle(route)
+      }
+    })
+  })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -81,8 +80,7 @@ watch(
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 61px 20px 20px 20px;
-  box-sizing: border-box;
   padding: 104px 20px 20px 20px;
+  box-sizing: border-box;
 }
 </style>

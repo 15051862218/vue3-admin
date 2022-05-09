@@ -2,13 +2,17 @@
 
 #app {
   .main-container {
-    min-height: 100%;
     transition: margin-left #{$sideBarDuration};
+
+    min-height: 100%;
+    transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
     position: relative;
   }
 
   .sidebar-container {
+    transition: width #{$sideBarDuration};
+
     position: fixed;
     top: 0;
     bottom: 0;
@@ -16,7 +20,7 @@
     width: $sideBarWidth !important;
     height: 100%;
     background-color: $menuBg;
-    transition: width #{$sideBarDuration};
+    transition: width 0.28s;
     z-index: 1001;
     overflow: hidden;
 

@@ -52,7 +52,6 @@
     </div>
   </el-card>
 </template>
-
 <script setup>
 import MyAvatar from '@/components/MyAvatar/index.vue'
 defineProps({

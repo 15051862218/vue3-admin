@@ -8,6 +8,7 @@ export const roleList = () => {
     url: '/role/list'
   })
 }
+
 /**
  * 获取指定角色的权限
  */
@@ -16,6 +17,7 @@ export const rolePermission = (roleId) => {
     url: `/role/permission/${roleId}`
   })
 }
+
 /**
  * 为角色修改权限
  */

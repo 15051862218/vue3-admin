@@ -1,9 +1,7 @@
-<template>
-  <div class="">article-detail</div>
-</template>
+<template><div class="">3455</div></template>
 
-<script setup>
-import {} from 'vue'
+<script>
+export default {}
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>

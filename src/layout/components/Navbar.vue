@@ -1,16 +1,19 @@
 <template>
   <div class="navbar">
-    <hamburger class="hanburger-container"></hamburger>
-    <breadcrumb></breadcrumb>
+    <hamburger class="hamburger-container"></hamburger>
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
-      <header-search class="right-menu-item hover-effect"></header-search>
+      <header-search class="right-menu-item hover-effect" />
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
-      <lang-select class="right-menu-item hover-effect"></lang-select>
-      <screen-full class="right-menu-item hover-effect"></screen-full>
+      <lang-select class="right-menu-item hover-effect" />
+
+      <screenfull class="right-menu-item hover-effect" />
+      <guide class="right-menu-item hover-effect" />
+
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar shape="square" :size="40" :src="$store.getters.userInfo.avatar"></el-avatar>
+          <el-avatar shape="square" :size="40" :src="$store.getters.userInfo.avatar"> </el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
 
@@ -22,7 +25,7 @@
             <a target="_blank" href="">
               <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
             </a>
-            <el-dropdown-item divided @click="handleLoginout">
+            <el-dropdown-item divided @click="logout">
               {{ $t('msg.navBar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -33,35 +36,19 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import hamburger from '@/components/Hamburger.vue'
-import breadcrumb from '@/components/Breadcrumb/index.vue'
-import LangSelect from '@/components/LangSelect'
-import ThemePicker from '@/components/ThemeSelect/index.vue'
-import ScreenFull from '@/components/Screenfull'
+import Guide from '@/components/Guide/index'
 import HeaderSearch from '@/components/HeaderSearch'
+import Screenfull from '@/components/Screenfull'
+import ThemePicker from '@/components/ThemeSelect/index'
+import LangSelect from '@/components/LangSelect'
+import Hamburger from '@/components/Hamburger/index.vue'
+import Breadcrumb from '@/components/Breadcrumb'
 import { useStore } from 'vuex'
+import { resetRouter } from '@/router'
 
 const store = useStore()
-const route = useRoute()
-// 生成数组数据
-const breadcrumbData = ref([])
-const getBreadcrumbData = () => {
-  breadcrumbData.value = route.matched.filter((item) => item.meta && item.meta.title)
-  console.log(breadcrumbData.value)
-}
-// 监听路由变化时触发
-watch(
-  route,
-  () => {
-    getBreadcrumbData()
-  },
-  {
-    immediate: true
-  }
-)
-const handleLoginout = () => {
+const logout = () => {
+  resetRouter()
   store.dispatch('user/logout')
 }
 </script>
@@ -74,12 +61,24 @@ const handleLoginout = () => {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
+  .hamburger-container {
+    float: left;
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    // hover 动画
+    transition: background 0.5s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
   .right-menu {
     display: flex;
     align-items: center;
     float: right;
     padding-right: 16px;
-
     ::v-deep(.right-menu-item) {
       display: inline-block;
       padding: 0 18px 0 0;
@@ -92,8 +91,7 @@ const handleLoginout = () => {
         cursor: pointer;
       }
     }
-
-    ::v-deep(.avatar-container) {
+    ::v-deep(avatar-container) {
       cursor: pointer;
       .avatar-wrapper {
         margin-top: 5px;
@@ -103,16 +101,6 @@ const handleLoginout = () => {
           margin-right: 12px;
         }
       }
-    }
-  }
-  .hamburger-container {
-    line-height: 46px;
-    height: 100%;
-    float: left;
-    cursor: pointer;
-    transition: background 0.5s;
-    &:hover {
-      background: rgba(0, 0, 0, 0.1);
     }
   }
 }

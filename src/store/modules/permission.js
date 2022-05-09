@@ -10,7 +10,7 @@ export default {
     /**
      * 增加路由
      */
-    setRoutes (state, newRoutes) {
+    setRoutes(state, newRoutes) {
       // 永远在静态路由的基础上增加新路由
       state.routes = [...publicRoutes, ...newRoutes]
     }
@@ -19,12 +19,12 @@ export default {
     /**
      * 根据权限筛选路由
      */
-    filterRoutes (context, menus) {
+    filterRoutes(context, menus) {
       const routes = []
       // 路由权限匹配
-      menus.forEach(key => {
+      menus.forEach((key) => {
         // 权限名 与 路由的 name 匹配
-        routes.push(...privateRoutes.filter(item => item.name === key))
+        routes.push(...privateRoutes.filter((item) => item.name === key))
       })
       // 最后添加 不匹配路由进入 404
       routes.push({

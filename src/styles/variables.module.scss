@@ -1,6 +1,6 @@
 // sidebar
 $menuText: #bfcbd9;
-$menuActiveText: #ffffff;
+$menuActiveText: #49aeed;
 $subMenuActiveText: #f4f4f5;
 
 $menuBg: #304156;
@@ -24,4 +24,6 @@ $sideBarDuration: 0.28s;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
   sideBarWidth: $sideBarWidth;
+  hideSideBarWidth: $hideSideBarWidth;
+  sideBarDuration: $sideBarDuration;
 }

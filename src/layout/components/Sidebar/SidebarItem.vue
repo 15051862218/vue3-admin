@@ -14,8 +14,8 @@
 </template>
 
 <script setup>
-import MenuItem from './MenuItem'
 
+import MenuItem from './MenuItem'
 // 定义 props
 defineProps({
   route: {

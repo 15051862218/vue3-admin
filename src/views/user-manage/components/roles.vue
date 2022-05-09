@@ -12,12 +12,14 @@
     </template>
   </el-dialog>
 </template>
+
 <script setup>
 import { ref, watch } from 'vue'
 import { roleList } from '@/api/role'
-import { watchSwitchLang } from '@/utils/i18n'
 import { useI18n } from 'vue-i18n'
 import { userRoles } from '@/api/user-manage'
+import { watchSwitchLang } from '@/utils/i18n'
+
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -28,27 +30,20 @@ const props = defineProps({
     required: true
   }
 })
+
 // 当前用户角色
 const userRoleTitleList = ref([])
 // 获取当前用户角色
 const getUserRoles = async () => {
   const res = await userRoles(props.userId)
-  userRoleTitleList.value = res.role.map(item => item.title)
+  userRoleTitleList.value = res.role.map((item) => item.title)
 }
 watch(
   () => props.userId,
-  val => {
+  (val) => {
     if (val) getUserRoles()
   }
 )
-const emits = defineEmits(['update:modelValue'])
-
-/**
- * 关闭
- */
-const closed = () => {
-  emits('update:modelValue', false)
-}
 
 // 所有角色
 const allRoleList = ref([])
@@ -58,14 +53,15 @@ const getListData = async () => {
 }
 getListData()
 watchSwitchLang(getListData)
+
 /**
- 确定按钮点击事件
-*/
+  确定按钮点击事件
+ */
 const i18n = useI18n()
 const onConfirm = async () => {
   // 处理数据结构
-  const roles = userRoleTitleList.value.map(title => {
-    return allRoleList.value.find(role => role.title === title)
+  const roles = userRoleTitleList.value.map((title) => {
+    return allRoleList.value.find((role) => role.title === title)
   })
 
   // 弹出数据观察
@@ -78,6 +74,14 @@ const onConfirm = async () => {
   closed()
   // 角色更新成功
   emits('updateRole')
+}
+const emits = defineEmits(['update:modelValue', 'updateRole'])
+
+/**
+ * 关闭
+ */
+const closed = () => {
+  emits('update:modelValue', false)
 }
 </script>
 

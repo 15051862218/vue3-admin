@@ -82,18 +82,17 @@ export default {
     sidebarDesc: 'Project function menu'
   },
   profile: {
-    muted:
-      '"Vue3 rewrite vue-element-admin, realize the back-end front-end integrated solution" project demonstration',
+    muted: '"Vue3 rewrite vue-element-admin, realize the back-end front-end integrated solution" project demonstration',
     introduce: 'Introduce',
     projectIntroduction: 'Project Introduction',
     projectFunction: 'Project Function',
     feature: 'Feature',
     chapter: 'Chapter',
     author: 'Author',
-    name: 'Syk',
-    job: 'A Studay Lover',
+    name: 'ykSheng',
+    job: 'A programming enthusiast',
     Introduction:
-      'A senior rojects with more than tens of millions of users. Committed to researching big front-end technology, he has been invited to participate in domestic front-end technology sharing sessions many times, such as: Google China Technology Sharing Session in 2018.'
+      'A programming enthusiast who is diligent and loves to study has a strong will and imagination beyond ordinary people'
   },
   userInfo: {
     print: 'Print',

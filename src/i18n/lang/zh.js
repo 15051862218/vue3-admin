@@ -89,10 +89,9 @@ export default {
     feature: '功能',
     chapter: '章节',
     author: '作者',
-    name: 'Syk',
-    job: '一个学习爱好者',
-    Introduction:
-      '高级技术专家，曾就职于国内一线互联网公司，统筹过的多个大型项目用户数已过千万级。致力于研究大前端技术，多次受邀参加国内前端技术分享会，如：2018 年 Google 中国技术分享会。'
+    name: 'ykSheng',
+    job: '一位编程爱好者',
+    Introduction: '一位编程爱好者,有着超出常人的意志力和天马行空的想象力'
   },
   userInfo: {
     print: '打印',

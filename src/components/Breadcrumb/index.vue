@@ -16,9 +16,10 @@
 </template>
 
 <script setup>
+import { generateTitle } from '@/utils/i18n'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { generateTitle } from '@/utils/i18n'
+import { useStore } from 'vuex'
 
 const route = useRoute()
 // 生成数组数据
@@ -45,9 +46,8 @@ const onLinkClick = (item) => {
 }
 
 // 将来需要进行主题替换，所以这里获取下动态样式
-const linkHoverColor = '#304156'
-// const store = useStore()
-// const linkHoverColor = ref(store.getters.cssVar.menuBg)
+const store = useStore()
+const linkHoverColor = ref(store.getters.cssVar.menuBg)
 </script>
 
 <style lang="scss" scoped>

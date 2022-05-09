@@ -20,27 +20,26 @@
     <distribute-permission v-model="distributePermissionVisible" :roleId="selectRoleId"></distribute-permission>
   </div>
 </template>
+
 <script setup>
 import { roleList } from '@/api/role'
 import { watchSwitchLang } from '@/utils/i18n'
 import { ref } from 'vue'
 import DistributePermission from './components/DistributePermission.vue'
-const allRoles = ref([])
 
+const allRoles = ref([])
+const getRoleList = async () => {
+  allRoles.value = await roleList()
+}
+getRoleList()
+watchSwitchLang(getRoleList)
 /**
  * 分配权限
  */
 const selectRoleId = ref('')
 const distributePermissionVisible = ref(false)
 const onDistributePermissionClick = (row) => {
-  console.log(123123)
   distributePermissionVisible.value = true
   selectRoleId.value = row.id
 }
-const getRoleList = async () => {
-  allRoles.value = await roleList()
-}
-getRoleList()
-watchSwitchLang(getRoleList)
-
 </script>

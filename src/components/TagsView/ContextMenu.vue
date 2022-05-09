@@ -13,6 +13,7 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 const props = defineProps({
   index: {
@@ -20,8 +21,10 @@ const props = defineProps({
     required: true
   }
 })
-
-const onRefreshClick = () => { }
+const router = useRouter()
+const onRefreshClick = () => {
+  router.go(0)
+}
 const store = useStore()
 const onCloseRightClick = () => {
   store.commit('app/removeTagsView', {
@@ -29,7 +32,6 @@ const onCloseRightClick = () => {
     index: props.index
   })
 }
-
 const onCloseOtherClick = () => {
   store.commit('app/removeTagsView', {
     type: 'other',

@@ -1,30 +1,12 @@
-/**
- * 写入新样式到 style
- * @param {*} elNewStyle  element-plus 的新样式
- * @param {*} isNewStyleTag 是否生成新的 style 标签
- */
-// export const writeNewStyle = (elNewStyle) => {}
-/**
- * 写入新样式到 style
- * @param {*} elNewStyle  element-plus 的新样式
- * @param {*} isNewStyleTag 是否生成新的 style 标签
- */
-
-/**
- * 根据主色值，生成最新的样式表
- */
-// export const generateNewStyle = (primaryColor) => {}
 import color from 'css-color-function'
 import rgbHex from 'rgb-hex'
-import formula from '@/constant/formula.json'
+import formula from '@/constants/formula.json'
 import axios from 'axios'
-
-/**
+/*
  * 写入新样式到 style
  * @param {*} elNewStyle  element-plus 的新样式
  * @param {*} isNewStyleTag 是否生成新的 style 标签
  */
-// export const writeNewStyle = (elNewStyle) => {}
 export const writeNewStyle = (elNewStyle) => {
   const style = document.createElement('style')
   style.innerText = elNewStyle

@@ -17,7 +17,7 @@
             <el-descriptions-item :label="$t('msg.userInfo.sex')">{{ detailData.gender }}</el-descriptions-item>
             <el-descriptions-item :label="$t('msg.userInfo.nation')">{{ detailData.nationality }}</el-descriptions-item>
             <el-descriptions-item :label="$t('msg.userInfo.mobile')">{{ detailData.mobile }}</el-descriptions-item>
-            <el-descriptions-item :label="$t('msg.userInfo.address')">{{ detailData.address }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('msg.userInfo.province')">{{ detailData.province }}</el-descriptions-item>
             <el-descriptions-item :label="$t('msg.userInfo.date')">{{
               $filters.dateFilter(detailData.openTime)
             }}</el-descriptions-item>
@@ -63,6 +63,7 @@
     </el-card>
   </div>
 </template>
+
 <script setup>
 import { userDetail } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
@@ -85,21 +86,23 @@ getUserDetail()
 watchSwitchLang(getUserDetail)
 // 打印相关
 const printLoading = ref(false)
+
 const printObj = {
   // 打印区域
   id: 'userInfoBox',
   // 打印标题
   popTitle: 'imooc-vue-element-admin',
   // 打印前
-  beforeOpenCallback (vue) {
+  beforeOpenCallback(vue) {
     printLoading.value = true
   },
   // 执行打印
-  openCallback (vue) {
+  openCallback(vue) {
     printLoading.value = false
   }
 }
 </script>
+
 <style lang="scss" scoped>
 .print-box {
   margin-bottom: 20px;
