@@ -1,30 +1,30 @@
 <template>
-  <div class="app-wrapper" :class="[$store.getters.sidebarOpened ? 'opensidebar' : 'hideSidebar']">
+  <div class="app-wrapper" :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']">
     <!-- 左侧 menu -->
-    <sidebar class="sidebar-container" :style="{ backgroundColor: $store.getters.cssVar.menuBg }" />
+    <sidebar id="guide-sidebar" class="sidebar-container" :style="{ backgroundColor: $store.getters.cssVar.menuBg }" />
+    <tags-view id="guide-tags"></tags-view>
     <div class="main-container">
       <div class="fixed-header">
         <!-- 顶部的 navbar -->
         <navbar />
+        <!-- tags -->
+        <tags-view></tags-view>
       </div>
       <!-- 内容区 -->
       <AppMain />
     </div>
   </div>
 </template>
-
 <script setup>
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import AppMain from './components/AppMain'
-import variables from '@/styles/variables.module.scss'
+import TagsView from '@/components/TagsView'
+import { } from 'vue'
 </script>
-
 <style lang="scss" scoped>
-@import '~@/styles/mixins.scss';
-@import '~@/styles/variables.module.scss';
-@import '@/styles/sidebar.scss';
-
+@import '../style/mixins.scss';
+@import '../style/variables.module.scss';
 .app-wrapper {
   @include clearfix;
   position: relative;
@@ -40,7 +40,6 @@ import variables from '@/styles/variables.module.scss'
   width: calc(100% - #{$sideBarWidth});
   transition: width #{$sideBarDuration};
 }
-
 .hideSidebar .fixed-header {
   width: calc(100% - #{$hideSideBarWidth});
 }
